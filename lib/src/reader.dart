@@ -143,7 +143,7 @@ class _SerialPortReaderImpl implements SerialPortReader {
       bytes = _waitEvents(port, events, args.timeout);
       if (bytes > 0) {
         final data = Util.read(bytes, (ffi.Pointer<ffi.Uint8> ptr) {
-          return dylib.sp_nonblocking_read(port, ptr.cast(), bytes);
+          return dylib.sp_blocking_read(port, ptr.cast(), bytes, 5000);
         });
         args.sendPort.send(data);
       } else if (bytes < 0) {
