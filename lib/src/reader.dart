@@ -104,6 +104,7 @@ class _SerialPortReaderImpl implements SerialPortReader {
       onCancel: _cancelRead,
       onPause: _cancelRead,
       onResume: _startRead,
+      sync: true
     );
   }
 
